@@ -26,7 +26,7 @@
       <th>{{ catalog.item_stock }}</th>
       <th>{{ catalog.description }}</th>
       <th>{{ catalog.rating }}</th>
-      <th>{{ catalog.item_url }}</th>
+      <th><a href={{ catalog.item_url }}>{{ catalog.item_url }}</a></th>
     </tr>
     {% endfor %}
     {% comment %} Add the data below this line {% endcomment %}
