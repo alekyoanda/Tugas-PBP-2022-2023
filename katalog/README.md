@@ -35,5 +35,11 @@
     B -->|Request| Django
     Django -->|Web Page| B
 ```
-### Penjelasan bagan:
+### Penjelasan Bagan:
+Lorem ipsum
 
+### Mengapa Menggunakan *Virtual Environment*?
+Lorem ipsum
+
+### Cara Pengimplementasian Program
+Lorem ipsum
