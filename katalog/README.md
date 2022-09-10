@@ -1,3 +1,4 @@
+## Bagan Request Client ke Aplikasi Web Berbasis Django
 ```mermaid
   flowchart TB
     subgraph TOP [Web server environment]
@@ -34,3 +35,5 @@
     B -->|Request| Django
     Django -->|Web Page| B
 ```
+### Penjelasan bagan:
+
