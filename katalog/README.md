@@ -53,5 +53,10 @@ Halaman yang ditampilkan kepada *user* pada *browser* adalah berupa *file html*.
 Namun, kita sebenarnya bisa membuat aplikasi web berbasis Django tanpa menggunakan *virtual environment*
 
 ### Cara Pengimplementasian Program
-Pertama,\
-Kedua,
+Pertama, saya membuat sebuah fungsi bernama *index* pada "views.py" dengan *request* sebagai parameter. Lalu, saya melakukan *query* ke *database* untuk mengambil semua data yang ada pada tabel **CatalogItem**. Setelah itu, saya membuat suatu variabel dengan tipe data *dictionary* yang menyimpan himpunan *key-value pair* yang nantinya akan diteruskan ke dalam file *html*, sehingga data - data dalam *dictionary* tersebut bisa digunakan pada file *html* tersebut dengan pengaksesan *key*-nya. Setelah itu, return fungsi *render* dengan *request*, file html: "katalog.html", dan variabel dictionary tadi sebagai parameternya.
+
+Kedua, saya membuat sebuah file dengan nama "urls.py" yang berisi sebuah variabel yang akan menyimpan semua pemetaan *URL Route* katalog *app* ke fungsi bersesuaian yang ada di "views.py". Variabel tersebut bernama *urlpatterns* dengan tipe data *list*.
+
+Ketiga, lakukan pemetaan data yang yang diteruskan dari fungsi *index* pada "views.py" ke dalam HTML dengan sintaks dari Django untuk pemetaan data template. Data dapat diakses dengan menulis "*{{ \<key\> }}*" pada file *html*-nya.
+
+Keempat, buat aplikasi baru pada heroku. Lalu, tambahkan "HEROKU_API_KEY" dan "HEROKU_API_NAME" pada *Secrets* di *repository django project* tersebut yang ada pada github. Setelah itu, tinggal lakukan *re-deployment* pada file *dpl.yml*.
