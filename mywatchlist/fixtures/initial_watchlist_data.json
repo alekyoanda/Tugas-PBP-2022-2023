@@ -1,0 +1,35 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "The Shawshank Redemption",
+            "rating": 5,
+            "release_date": "1994-09-10",
+            "review": "The Shawshank Redemption has great performances, extremely well written script and story all leading to a deeply emotional climax! One of the best dramas of all time!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": true,
+            "title": "12 Angry Men",
+            "rating": 5,
+            "release_date": "1957-04-10",
+            "review": "The only thing I can write as an average Joe who watches movies simply to be entertained or see a story being told, is that I watched 12 Men argue in a room for more than an hour and I couldn't look away from the screen. Simply a masterpiece!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": true,
+            "title": "Avengers: Infinity War",
+            "rating": 5,
+            "release_date": "2018-04-23",
+            "review": "This movie portrays a villain that by far has been the best out of all the other Marvel antagonists. It shows his personal conflicts, his purpose, as well as his cruelty. The heroes of this film are overshadowed by this, but the ending really makes a mark on the audience."
+        }
+    }
+]
