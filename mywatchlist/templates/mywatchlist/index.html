@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+    <ul>
+        <li><a href="{% url 'mywatchlist:show_html' %}">Show html</a></li>
+        <li><a href="{% url 'mywatchlist:show_json' %}">Show json</a></li>
+        <li><a href="{% url 'mywatchlist:show_xml' %}">Show xml</a></li>
+    </ul>
+    
+
+ {% endblock content %}

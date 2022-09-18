@@ -24,9 +24,15 @@
         Yes
         {% else %}
         Not yet
-        {% endif %}</th>
+        {% endif %}
+      </th>
       <th>{{ watchlist.title }}</th>
-      <th>{{ watchlist.rating }}</th>
+      <th>{% if watchlist.rating >= 0 %}
+        {{ watchlist.rating }}
+        {% else %}
+        -
+        {% endif %}
+      </th>
       <th>{{ watchlist.release_date }}</th>
       <th>{{ watchlist.review }}</th>
     </tr>

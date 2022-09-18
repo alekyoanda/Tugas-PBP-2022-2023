@@ -4,7 +4,7 @@ from .models import MyWatchList
 from django.core import serializers
 
 def index(request):
-    return HttpResponse("My Watchlist")
+    return render(request, 'mywatchlist/index.html')
 
 def show_html(request):
     watchlists = MyWatchList.objects.all()
@@ -16,7 +16,7 @@ def show_html(request):
         'amount_watched': len(watched),
         'amount_unwatched': len(watchlists) - len(watched)
     }
-    return render(request, 'mywatchlist.html', context)
+    return render(request, 'mywatchlist/mywatchlist.html', context)
 
 def show_json(request):
     watchlists = MyWatchList.objects.all()
