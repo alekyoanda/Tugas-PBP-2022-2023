@@ -1,4 +1,3 @@
-import imp
 from django.urls import path
 from . import views
 
@@ -9,5 +8,7 @@ urlpatterns = [
     path('login/', views.login_user, name="login"),
     path('register/', views.register, name="register"),
     path('create-task/', views.create_task, name="create_task"),
-    path('logout/', views.logout_user, name="logout")
+    path('logout/', views.logout_user, name="logout"),
+    path('delete_task/<int:task_id>', views.delete_task, name="delete_task"),
+    path('selesaikan_task/<int:task_id>', views.selesaikan_task, name="selesaikan_task"),
 ]
