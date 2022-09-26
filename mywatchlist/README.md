@@ -92,7 +92,10 @@ Dalam melakukan *deployment*, saya melakukan *push* ke *remote* dari Tugas 2 PBP
 
 ## Pemeriksaan *Routes* dengan Postman
 ```mywatchlist/html```
+<img width="956" alt="html" src="https://user-images.githubusercontent.com/84554095/191294810-4ff2899f-ae7b-47fc-abe0-1a4424b3a259.png">
 
 ```mywatchlist/json```
+<img width="960" alt="json" src="https://user-images.githubusercontent.com/84554095/191294879-d3b45a39-de01-4f5f-9436-dda2727d5d23.png">
 
 ```mywatchlist/xml```
+<img width="960" alt="xml" src="https://user-images.githubusercontent.com/84554095/191294911-c685addc-a6de-4b66-8e18-e5a6ea77198e.png">
