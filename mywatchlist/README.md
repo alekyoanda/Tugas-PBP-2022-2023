@@ -63,7 +63,32 @@ Berikut merupakan contoh data yang disimpan dalam format XML:
 *Data delivery* sangat penting di dalam pengimplementasian sebuah *platform* pada aplikasi yang melakukan pengaksesan data pada sebuah *database*. Jika tidak ada mekanisme *data delivery*, maka data dari *database* tidak bisa ditampilkan kepada *client*.
 
 ## Implementasi *Checklist* Tugas 3
-```TO-DO```
+Pertama, saya membuat aplikasi baru bernama ```mywatchlist``` dengan menjalankan perintah
+
+```
+python manage.py startapp mywatchlist
+```
+
+Setelah itu, tambahkan aplikasi ```mywatchlist``` pada ```settings.py``` di variabel ```INSTALLED_APPS```. Selain itu, tambahkan juga *route* ```/mywatchlist``` ke dalam ```urls.py``` pada folder ```project_django```. Lalu, buat class baru bernama ```MyWatchList``` pada ```models.py``` dengan atribut-atribut seperti yang diminta soal sesuai dengan kebutuhannya. Setelah itu, kita jalankan
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Kode di atas bertujuan untuk mempersiapkan dan melaksanakan skema model. Setelah itu, saya membuat folder bernama ```fixtures``` di dalam aplikasi ```mywatchlist``` dan membuat file bernama ```initial_watchlist_data.json``` yang berisi 10 data sesuai dengan skema model ```MyWatchList``` yang telah dibuat sebelumnya. Lalu, saya menjalankan perintah 
+```
+python manage.py loaddata initial_wishlist_data.json
+``` 
+untuk memasukkan data tersebut ke dalam *database*.
+
+Setelah itu, saya melanjutkan dengan menyajikan data dalam HTML, XML, dan JSON dengan membuat 3 fungsi yang ```handle``` masing-masing format di ```views.py``` pada folder ```mywatchlist```. Untuk HTML, saya mengakses semua data pada *database*, serta dimasukkan ke dalam sebuah *dictionary* bernama ```context```. Lalu, dilanjutkan dengan menggunakan fungsi ```render()``` dengan ```request```, ```context```, dan *file template*``` mywatchlist.html```.
+
+Pada XML dan JSON, seperti pada HTML, saya mengakses semua data pada *database*. Namun, yang berbeda adalah fungsi untuk kedua format ini mengembalikan ```HttpResponse``` yang isinya adalah data yang di-*serialize* sesuai dengan tipe penyajian datanya, yaitu JSON atau XML.
+
+Setelah itu, buatlah *path-path* untuk penyajian data HTML, XML, dan JSON ke dalam ```urls.py``` pada folder ```mywatchlist```. Sesuaikan dengan fungsi yang ada pada ```views.py```. 
+
+Dalam melakukan *deployment*, saya melakukan *push* ke *remote* dari Tugas 2 PBP sebelumnya yang sudah di-*deploy* sehingga projek kali ini langsung ter-*deploy* ulang.
 
 ## Pemeriksaan *Routes* dengan Postman
 ```mywatchlist/html```
