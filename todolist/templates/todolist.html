@@ -8,7 +8,7 @@
 {% endblock meta %}
 
 {% block content %}
-<nav class="navbar fixed-top navbar-light px-5 mb-3" id="navbar-todolist">
+<nav class="navbar navbar-light px-5 mb-3" id="navbar-todolist">
     <span class="navbar-brand mb-0 h1">{{ nama }}</span>
     <button class="btn btn-light" id="btn-main"><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
     <a href="{% url 'todolist:logout' %}">Logout</a>
