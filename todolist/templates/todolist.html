@@ -1,35 +1,71 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>My Todolist</title>
+<link rel="stylesheet" href="{% static 'todolist/style_index.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock meta %}
 
 {% block content %}
-<h5>Nama: {{ nama }}</h5>
+<nav class="navbar fixed-top navbar-light px-5 mb-3" id="navbar-todolist">
+    <span class="navbar-brand mb-0 h1">{{ nama }}</span>
+    <button class="btn btn-light" id="btn-main"><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
+    <a href="{% url 'todolist:logout' %}">Logout</a>
+  </nav>
 
-<table>
-    <tr>
-    <th>Tanggal Pembuatan</th>
-    <th>Judul</th>
-    <th>Deskripsi</th>
-    <th>Status</th>
-    </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for task in tasks %}
-    <tr>
-        <th>{{task.date}}</th>
-        <th>{{task.title}}</th>
-        <th>{{task.description}}</th>
-        <th>{% if task.is_finished %}
-            Selesai
-            {% else %}
-            Belum Selesai
-            {% endif %}
-        </th>
-        {% if not task.is_finished %}
-            <th><button><a href="{% url 'todolist:selesaikan_task' task.id %}">Selesaikan Task</a></button></th>
-        {% endif %}
-        <th><button><a href="{% url 'todolist:delete_task' task.id %}">Hapus Task</a></button></th>
-    </tr>
-{% endfor %}
-</table>
-<button><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% if tasks %}
+    <div class="container">
+        <h1 class="text-center">Todolist</h1>
+        <br>
+        <div class="row" id="card-grid">
+            {% for task in tasks %}
+            <div class="col-lg-3 col-md-6 col-sm-10 col-xs-1 mb-4" >
+                <div class="card border-light mx-auto" id="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{ task.title }}</h5>
+                            <div class="d-flex justify-content-end">
+                                {% if not task.is_finished %}
+                                    <a href="{% url 'todolist:selesaikan_task' task.id %}">    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle text-muted" id="check_task" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                    </a>
+                                {% endif %}
+                                <a href="{% url 'todolist:delete_task' task.id %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash text-muted" id="delete_task" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                </a>
+                            
+                            </div>
+                        </div>
+                        {% if task.is_finished %}
+                        <h6 class="card-subtitle mb-2 text-success" style="color:green;">Selesai</h6>
+                        {% else %}
+                        <h6 class="card-subtitle mb-2 text-danger" style="color:red;">Belum Selesai</h6>
+                        {% endif %}
+                        
+                        <p class="card-text">{{ task.description }}</p>
+                        <p class="card-text text-muted">{{ task.date }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+{% else %}
+<div class="d-flex justify-content-center">
+    <h1>No Task :)</h1>
+</div>
+
+{% endif %}
+
+
+
 
 {% endblock content %}

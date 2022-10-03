@@ -40,7 +40,7 @@
     {% comment %} Add the data below this line {% endcomment %}
   </table>
   <h2>
-    {% if amount_unwatched < amount_watched %}
+    {% if amount_unwatched <= amount_watched %}
         Selamat, kamu sudah banyak menonton!
     {% else %}
         Wah, kamu masih sedikit menonton!

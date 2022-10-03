@@ -1,0 +1,56 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#navbar-todolist{
+    background-color: #32CCBC;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#btn-main{
+    background-color: #32CCBC;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: 0.2s;
+}
+
+
+#btn-main a{
+    color: white;
+    text-decoration: none;
+}
+
+#navbar-todolist a{
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.container #card{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.4s;
+}
+
+.container #card:hover{
+    top: -10px;
+}
+
+.container #delete_task{
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.container #delete_task:hover{
+    color: red !important;
+}
+
+.container #check_task{
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.container #check_task:hover{
+    color: green !important;
+}

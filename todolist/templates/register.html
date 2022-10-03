@@ -1,34 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
 <title>Registrasi Akun</title>
+<link rel="stylesheet" href="{% static 'todolist/style_login.css' %}">
 {% endblock meta %}
 
 {% block content %}  
-
-<div class = "login">
+<div class="container-login">
+    <div class = "register-form">
+        <h2>Formulir Registrasi</h2>  
+            <form method="POST" >  
+                {% csrf_token %}  
+                <table>  
+                    {{ form.as_table }}  
+                    <tr>  
+                        <td></td>
+                        <td><input type="submit" name="submit" value="Daftar"/></td>  
+                    </tr>  
+                </table>  
+            </form>
     
-    <h1>Formulir Registrasi</h1>  
-
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
+        {% if messages %}  
+            <ul>   
+                {% for message in messages %}  
+                    <li>{{ message }}</li>  
+                    {% endfor %}  
+            </ul>   
+        {% endif %}
+    
+    </div>  
+</div>
 
 {% endblock content %}

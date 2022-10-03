@@ -14,6 +14,8 @@ from django.urls import reverse
 def show_todolist(request):
     user = request.user
     tasks = Task.objects.filter(user=user)
+    if len(tasks) == 0:
+        tasks = None
     context = {
         "nama": user.username,
         "tasks": tasks
