@@ -1,3 +1,161 @@
+# Tugas 5 PBP
+## Link Aplikasi Heroku
+https://tugas2-pbp-alek.herokuapp.com
+
+## Inline, Internal, dan External CSS
+### Inline CSS
+Inline CSS umumnya digunakan untuk menata tag HTML tertentu saja. Kita dapat melakukan *styling* dengan CSS hanya dengan menambahkan atribut ```style``` ke tag HTML.\
+Contoh:
+```
+<h1 style="background-color:yellow;"> Ini heading dengan warna background kuning</h1>
+<p style="color:red"> Ini paragraf dengan tulisan berwarna merah</p>
+```
+#### Kelebihan:
+<ul>
+    <li> Tidak perlu membuat atau menautkan dokumen terpisah seperti yang disyaraktkan di external CSS.
+    <li> Berguna untuk menguji atau melihat pratinjau perubahan, dan melakukan perbaikan cepat ke halaman html.
+</ul>
+
+#### Kekurangan:
+<ul>
+    <li>Kita perlu menulis CSS styling di setiap tag HTML satu per satu. Jadi mengelola aplikasi web yang besar mungkin tidak efektif dan efisien.
+    <li> Menata banyak tag HTML dengan Inline CSS dapat memengaruhi ukuran halaman dan waktu pengunduhan
+</ul>
+
+### Internal CSS
+Internal CSS biasanya digunakan untuk melakukan *styling* pada satu halaman HTML. Kita dapat menulis CSS internal dengan menggunakan tag ```<style>``` yang dimasukkan di dalam tag ```<head>``` pada sebuah halaman html.\
+Contoh:
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: red;
+            }
+            h1 {
+                color: maroon;
+                margin-left: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Ini heading</h1>
+        <p>Ini paragraf</p>
+    </body>
+</html>
+```
+
+#### Kelebihan:
+<ul>
+    <li> Kita dapat menggunakan ID dan Class selector untuk melakukan CSS styling.
+    <li> Tidak perlu membuat atau menautkan dokumen terpisah seperti yang disyaraktkan di external CSS.
+</ul>
+
+#### Kekurangan:
+<ul>
+    <li>Karena kita hanya akan menambahkan kode CSS dalam satu halaman HTML, menata beberapa halaman HTML akan memakan waktu.
+    <li> Menambahkan kode CSS ke tiap halaman HTML dapat meningkatkan ukuran halaman dan waktu pemuatan.
+</ul>
+
+### External CSS
+Dengan external CSS, kita dapat mengubah tampilan seluruh halaman html hanya dengan mengubah satu file CSS. Kita dapat menulis external CSS dalam file ```.css``` terpisah. Setiap halaman HTML harus menyertakan referensi ke file CSS eksternal tadi di dalam tag ```<link href=|nama-file-css|>```, di dalam tag ```<head>```.\
+Contoh:
+
+Berikut adalah file CSS-nya, misal nama filenya ```style.css```:
+```
+h1{
+   background-color:orange;
+}
+.box{
+   height:200px;
+   width:300px;
+   background-color:yellow;
+}
+#circle{
+   height:200px;
+   width:200px;
+   background-color:red;
+   border-radius:50%;
+}
+```
+Lakukan *linking* dari file HTML ke file CSS tersebut:
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="my-style.css" />
+    </head>
+    <body>
+        <h1>Simple example of external CSS</h1>
+        <div class="box"></div>
+        <div id="circle"></div>
+  </body>
+</html>
+```
+#### Kelebihan:
+<ul>
+    <li> Karena kode CSS berada dalam file terpisah, halaman HTML Anda akan memiliki struktur yang rapi dan ukurannya lebih kecil.
+    <li> Kita dapat menggunakan file .css yang sama untuk beberapa halaman HTML jika kita menginginkan tampilan yang sama untuk setiap halaman.
+</ul>
+
+#### Kekurangan:
+<ul>
+    <li>Halaman Web kita mungkin tidak te-render dengan benar hingga external CSS dimuat.
+</ul>
+
+## Macam - Macam Tag HTML5
+Beberapa tag HTML5 yang saya tau adalah sebagai berikut:
+
+```
+1. <h1> - <h6>  : Typography khusus header pada halaman web
+2. <a>          : Menautkan elemen HTML ke sebuah tautan
+3. <form>       : Membuat sebuah form pada halaman web
+4. <p>          : Typography khusus penulisan paragraf pada halaman web
+5. <img>        : Memuat sebuah gambar pada halaman web
+6. <table>      : Membuat sebuah tabel pada halaman web
+7. <style>      : Melakukan internal CSS styling
+```
+
+## Tipe - Tipe CSS Selector
+Terdapat beberapa tipe CSS Selector, antara lain:
+
+### 1. CSS Element Selector
+Selector tipe ini memilih elemen berdasarkan nama tag HTML-nya.\
+Contoh:
+```
+p{  
+    text-align: center;  
+    color: blue;  
+}   
+```
+### 2. CSS Id Selector
+Selector tipe ini memilih elemen berdasarkan Id dari elemennya yang bersifat unik. Cara menggunakan selector tipe ini adalah dengan menulis ```#```, dilanjutkan dengan Id elemennya.
+Contoh:
+```
+#para1 {  
+    text-align: center;  
+    color: blue;  
+}  
+```
+### 3. CSS Class Selector
+Selector tipe ini memilih elemen HTML dengan atribut ```class``` tertentu. Digunakan dengan karakter titik ```.``` diikuti dengan nama class-nya.\
+Contoh:
+```
+.center {  
+    text-align: center;  
+    color: blue;  
+}  
+```
+## Implementasi Tugas 5
+Pertama, saya melakukan *linking* bootstrap *framework* pada folder ```base.html``` yang ada di ```project_django```.
+Setelah itu, saya membuat sebuah folder dengan nama ```static/todolist``` pada aplikasi ```todolist```, dimana terdapat 2 buah file CSS dalam folder tersebut. File CSS pertama namanya ```style_login.css```. File CSS tersebut akan mengatur *styling* dari beberapa file HTML, yaitu ```login.html```, ```register.html```, dan ```create_task.html```. Sedangkan, file CSS kedua dengan nama ```style_index.css``` akan mengatur *styling* dari file HTML ```show_todolist.html```.Setelah itu, saya melakukan *linking* file HTML yang saya tujukan tadi ke file CSS-nya masing - masing dengan menggunakan baris kode berikut:
+```
+<link rel="stylesheet" href="{% static 'todolist/<nama_file_css>' %}">
+```
+Setelah itu, saya melakukan *styling* dengan menggunakan CSS dan juga bootstrap. Pada ```show_todolist.html```, saya membuat sebuah ```card``` untuk merepresentasikan 1 buah task dengan menggunakan bootstrap. Lalu, saya juga melakukan *styling* pada ```card``` tersebut di file CSS agar bisa menerapkan efek *hover*. Tidak lupa juga saya membuat semua halaman web saya menjadi *responsive* dengan menggunakan ```media query``` yang ditulis pada file CSS.
+
+---
 # Tugas 4 PBP
 
 ## Link Aplikasi Heroku
