@@ -15,7 +15,6 @@ body{
     transition: 0.2s;
 }
 
-
 #btn-main a{
     color: white;
     text-decoration: none;
@@ -40,6 +39,24 @@ body{
 .container #delete_task{
     cursor: pointer;
     transition: 0.2s;
+}
+
+.container #finish-task-ajax{
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.container #finish-task-ajax:hover{
+    color: green !important;
+}
+
+.container .delete-task-ajax{
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.container .delete-task-ajax{
+    color: red !important;
 }
 
 .container #delete_task:hover{
