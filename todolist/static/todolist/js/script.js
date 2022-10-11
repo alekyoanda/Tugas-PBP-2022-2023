@@ -103,6 +103,13 @@ function addTaskAsync($element, fields, task_id) {
   const title = fields["title"];
   const description = fields["description"];
   const date = fields["date"];
+  const tombol_selesai = (!fields["is_finished"]) ? `<div class="finish-task-ajax" id="finish-${task_id}">` +
+  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle text-muted" id="check_task" viewBox="0 0 16 16">' +
+      '<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>' +
+      '<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>' +
+  '</svg>' +
+'</div>' : "";
+  const status_text = (!fields["is_finished"]) ? `<h6 class="card-subtitle mb-2 text-danger" id="task-status-${task_id}" style="color:red;">Belum Selesai</h6>` :  `<h6 class="card-subtitle mb-2 text-success" id="task-status-${task_id}" style="color:green;">Selesai</h6>`
 
   var html = 
   `<div class="col-lg-4 col-md-6 col-sm-10 col-xs-1 mb-4" id="task-card-${task_id}">` +
@@ -111,12 +118,7 @@ function addTaskAsync($element, fields, task_id) {
           '<div class="d-flex justify-content-between">' +
               `<h5 class="card-title">${title}</h5>` +
               '<div class="d-flex justify-content-end">' +
-                  `<div class="finish-task-ajax" id="finish-${task_id}">` +
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle text-muted" id="check_task" viewBox="0 0 16 16">' +
-                        '<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>' +
-                        '<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>' +
-                    '</svg>' +
-                  '</div>' +
+                  tombol_selesai + 
                   `<div class="delete-task-ajax" id="${task_id}">` +
                       '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash text-muted" id="delete_task" viewBox="0 0 16 16">' +
                           '<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>' +
@@ -125,7 +127,7 @@ function addTaskAsync($element, fields, task_id) {
                   '</div>' +
               '</div>' +
           '</div>' +
-          `<h6 class="card-subtitle mb-2 text-danger" id="task-status-${task_id}" style="color:red;">Belum Selesai</h6>` +
+          status_text +
           `<p class="card-text">${description}</p>` +
           `<p class="card-text text-muted">${date}</p>` +
       '</div>' +
